@@ -463,7 +463,7 @@ task extract_data;
   endtask 
 
 
-task single_block_run(input [255:0]key, input [95:0]nonce, input expected, input keylen, input [4:0]rounds, input [511:0]data_in);
+task single_block_run(input [255:0]key, input keylen, input [95:0]nonce, input [4:0]rounds, input [511:0]expected, input [511:0]data_in);
     begin
         tc_ctr = tc_ctr + 1;
         write_parameters(.key(key),.nonce(nonce),.keylen(keylen),.rounds(rounds),.data_in(data_in));
@@ -501,7 +501,12 @@ initial
     show_top_state();
     
     $display("Entering Parameters given in Test Bench");
-    single_block_run();
+    single_block_run(256'h000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f,
+                    KEY_256_BITS,
+                    96'h000000090000004a00000000,
+                    TWENTY_ROUNDS,
+                    512'h60fdedbd1a280cb741d0593b6ea0309010acf18e1471f68968f4c9e311dca149b8e027b47c81e0353db013891aa5f68ea3b13dd2f3b8dd0873bf3746e7d6c567,
+                    512'h4c616469657320616e642047656e746c656d656e206f662074686520636c617373206f66202739393a204966204920636f756c64206f6666657220796f75206f);
     
     //Parameters yet to be entered
     display_results();
