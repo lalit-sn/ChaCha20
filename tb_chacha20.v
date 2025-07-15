@@ -81,6 +81,12 @@ parameter ADDR_OUTPUT15 = 8'h7f;
 
 parameter STATUS_ready_bit = 0;
 
+parameter KEY_256_BITS = 1;
+
+parameter EIGHT_ROUNDS  = 8;
+parameter TEN_ROUNDS = 10;
+parameter TWELWE_ROUNDS = 12;
+parameter TWENTY_ROUNDS = 20;    
 // WIRES AND REGISTER
 
 reg tb_clk;
